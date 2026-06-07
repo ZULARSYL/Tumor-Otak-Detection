@@ -1,15 +1,15 @@
-# 🔥 Fire Detection using YOLOv8
+# 🔥 Tumor Detection YOLOv8(nano)
 
-Sistem deteksi kebakaran berbasis **Object Detection** menggunakan model **YOLOv8**.  
-Proyek ini bertujuan untuk mengidentifikasi keberadaan api secara real-time dari gambar atau video, yang dapat digunakan sebagai sistem peringatan dini untuk meminimalkan dampak kebakaran.
+Sistem deteksi Tumor otak **Object Detection** menggunakan model **YOLOv8**.  
+Proyek ini bertujuan untuk mendeteksi area tumor otak pada citra MRI medis.
 
 ---
 
 ## 📌 Fitur Utama
 
-- ✅ Deteksi api secara real-time dengan akurasi tinggi
+- ✅ Deteksi tumor otak dengan akurasi tinggi
 - ✅ Menggunakan model YOLOv8 yang ringan dan powerful
-- ✅ Dukungan input dari gambar, video, atau kamera langsung
+- ✅ Dukungan input dari gambar mri dan juga citra medis langsung
 
 ---
 
@@ -18,7 +18,7 @@ Proyek ini bertujuan untuk mengidentifikasi keberadaan api secara real-time dari
 - [Python](https://www.python.org/)
 - [YOLOv8 by Ultralytics](https://github.com/ultralytics/ultralytics)
 - [OpenCV](https://opencv.org/) untuk pemrosesan gambar & video
-- [Makesense](https://www.makesense.ai/) atau LabelImg untuk pelabelan dataset
+- [Roboflow](https://https://roboflow.com/) untuk pelabelan dataset, preprocessing, augmentasi dan split dataset (train. val dan test)
 - [Flask](<(https://flask.palletsprojects.com/en/stable/)>) untuk tampilan web lebih memudahkan interakasi user
 
 ---

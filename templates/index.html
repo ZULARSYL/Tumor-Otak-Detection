@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroScan AI - Deteksi Tumor Otak MRI dengan YOLOv8</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/style.css">
+
+    <script src="static/script.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-brain me-2"></i>Neuro<span>Detect</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tech">Teknologi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#classification">Klasifikasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#upload">Deteksi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Deteksi Tumor Otak dari Citra MRI dengan Algoritma <span style="color: var(--accent-color);">YOLOv8</span></h1>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                        Sistem AI canggih untuk mendeteksi dan mengklasifikasikan tumor otak secara otomatis dari gambar MRI menggunakan model YOLOv8 varian nano yang telah dioptimalkan untuk aplikasi medis. Tingkat kepercayaan mencapai 96.9% pada dataset custom.
+                    </p>
+                    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                        <a href="#upload" class="btn-hero me-3">
+                            <i class="fas fa-upload me-2"></i>Unggah MRI
+                        </a>
+                        <a href="#tech" class="btn-hero" style="background: transparent; border: 2px solid white;">
+                            <i class="fas fa-cogs me-2"></i>Pelajari Teknologi
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="hero-image-container text-center">
+                        <img src="static/img/hero_img.jpg" staticalt="MRI Brain Scan" class="hero-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Used Section -->
+    <section id="tech" class="section-padding tech-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="section-title">Teknologi yang Digunakan</h2>
+                    <p class="section-subtitle">
+                        Sistem kami menggunakan teknologi deep learning terbaru yang dioptimalkan untuk analisis gambar medis, dengan akurasi tinggi dan kecepatan pemrosesan real-time.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-3 txt-center justify-content-center">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>YOLOv8 Nano</h4>
+                        <p>
+                           Model deteksi objek yang sangat ringan dan cepat, dioptimalkan untuk aplikasi medis dengan kompleksitas komputasi yang rendah namun tetap mempertahankan akurasi tinggi dalam mendeteksi tumor otak dari gambar MRI.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Deep Learning</h4>
+                        <p>
+                            Jaringan saraf konvolusional (CNN) yang secara otomatis mengekstraksi fitur penting dari gambar MRI tanpa perlu intervensi manual.
+                        </p>
+                    </div>
+                </div>
+            
+                
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Akurasi Tinggi</h4>
+                        <p>
+                            Mencapai precsion 96,9%, recall 95,1%, mAP@50 98%, dan mAP@50:95 72,3% dalam deteksi tumor yang menantang.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="tech-card text-center">
+                        <img 
+                        src="static/img/results.png"
+                        alt="Grapik Hasil Pelatihan YOLOv8 pada Dataset Tumor Otak"
+                        class="img-fluid rounded shadow"
+                        style="width:100%; max-height:500px; object-fit:cover;">>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classification Section -->
+    <section id="classification" class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="section-title">Klasifikasi Tumor Otak</h2>
+                    <p class="section-subtitle">
+                        Sistem kami dapat mengklasifikasikan tumor otak ke dalam 2 kelas dengan akurasi tinggi menggunakan model YOLOv8.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-6" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="classification-card">
+                        <div class="classification-header" style="background-color: var(--danger-color);">
+                            <i class="fas fa-tumor me-2"></i> Tumor Terdeteksi
+                        </div>
+                        <div class="classification-body">
+                            <img src="static/img/tumor terdeteksi.png" alt="MRI dengan Tumor" class="mri-image">
+                            <p>Contoh gambar MRI dengan tumor otak yang terdeteksi. Tumor ditandai dengan bounding box merah.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6" data-aos="flip-right" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="classification-card">
+                        <div class="classification-header" style="background-color: var(--success-color);">
+                            <i class="fas fa-check-circle me-2"></i> Tidak Ada Tumor
+                        </div>
+                        <div class="classification-body">
+                            <img src="static/img/no tumor.png" alt="MRI Tanpa Tumor" class="mri-image">
+                            <p>Contoh gambar MRI tanpa tumor otak. Sistem akan menampilkan "No Tumor" ketika tidak ada abnormalitas yang terdeteksi.</p>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="tech-card">
+                        <h4 class="mb-3">Kinerja Klasifikasi Berdasarkan Penelitian</h4>
+                        <p>
+                            Dataset yang digunakan mencakup 5.000 gambar berlabel dan 15 citra yang berasal dari rumah sakit sebagai eksternal validasinya. terdapat 2 kelas yaitu tumor dan no tumor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="section-padding upload-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <h2 class="section-title">Deteksi Tumor Otak</h2>
+                    <p class="section-subtitle">
+                        Unggah gambar MRI otak Anda untuk dianalisis oleh sistem AI kami. Sistem akan mendeteksi keberadaan tumor dan menampilkan hasilnya dengan bounding box.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="upload-container" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="200">
+                        <div id="uploadSection">
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">
+                                    <i class="fas fa-file-upload"></i>
+                                </div>
+                                <h4>Unggah Gambar MRI</h4>
+                                <p class="text-muted">Seret dan lepas file gambar MRI Anda di sini atau klik untuk memilih file</p>
+                                <p class="small text-muted">Format yang didukung: JPG, PNG, DICOM. Ukuran maks: 10MB</p>
+                                <button class="btn btn-outline-primary mt-3" id="browseButton">
+                                    <i class="fas fa-folder-open me-2"></i>Pilih File
+                                </button>
+                                <input type="file" id="fileInput" class="file-input" accept=".jpg,.jpeg,.png,.dicom">
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn-process" id="processButton" disabled>
+                                    <i class="fas fa-play-circle me-2"></i>Proses Deteksi Tumor
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="result-container" id="resultContainer">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h4 class="mb-0">Hasil Deteksi</h4>
+                                    <button type="button" class="btn-close" id="closeResultButton" aria-label="Close"></button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6" data-aos="fade-right" data-aos-duration="800">
+                                            <h5>Gambar Asli</h5>
+                                            <img id="originalImage" class="result-image" src="" alt="Original MRI">
+                                        </div>
+                                        <div class="col-md-6" data-aos="fade-left" data-aos-duration="800">
+                                            <h5>Hasil Deteksi</h5>
+                                            <div class="position-relative">
+                                                <img id="processedImage" class="result-image" src="" alt="Processed MRI">
+                                                <div id="boundingBox" class="bounding-box" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4" id="detectionResults" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                                        <!-- Results will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1000">
+                    <h5><i class="fas fa-brain me-2"></i>NeuroDetect</h5>
+                    <p>
+                        Platform deteksi tumor otak canggih menggunakan teknologi deep learning YOLOv8 untuk analisis gambar MRI dengan akurasi tinggi.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h5>Menu</h5>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#tech" class="footer-link">Teknologi</a>
+                    <a href="#classification" class="footer-link">Klasifikasi</a>
+                    <a href="#upload" class="footer-link">Deteksi</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h5>Kontak</h5>
+                    <p class="mb-2">
+                        <i class="fas fa-envelope me-2"></i> zularsyl96@gmail.com
+                    </p>
+                    <p class="mb-2">
+                        <i class="fas fa-phone me-2"></i> +62 857-3766-2724
+                    </p>
+                    <p>
+                        <i class="fas fa-map-marker-alt me-2"></i> Lumajang, Jawa Timur, Indonesia
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                <p>&copy; @dzularsyl. Hak Cipta Dilindungi. Dibangun dengan Bootstrap 5.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS with custom settings
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: true,
+            offset: 100,
+            delay: 0
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.style.padding = '0.5rem 0';
+                    navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.padding = '1rem 0';
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+                
+                // Update active nav link based on scroll position
+                const sections = document.querySelectorAll('section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // File upload functionality
+            const uploadSection = document.getElementById('uploadSection');
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const browseButton = document.getElementById('browseButton');
+            const processButton = document.getElementById('processButton');
+            const resultContainer = document.getElementById('resultContainer');
+            const originalImage = document.getElementById('originalImage');
+            const processedImage = document.getElementById('processedImage');
+            const boundingBox = document.getElementById('boundingBox');
+            const detectionResults = document.getElementById('detectionResults');
+            const closeResultButton = document.getElementById('closeResultButton');
+            let selectedFile = null;
+
+            function attachUploadListeners() {
+            const currentBrowseButton = uploadArea.querySelector('#browseButton');
+            const currentFileInput = uploadArea.querySelector('#fileInput');
+
+            if (!currentBrowseButton || !currentFileInput) return;
+
+            // CLICK
+            currentBrowseButton.onclick = () => {
+                currentFileInput.click();
+            };
+
+            // CHANGE (upload file)
+            currentFileInput.onchange = function () {
+                if (this.files && this.files[0]) {
+                    handleFileSelection(this.files[0]);
+                }
+            };
+
+            // DRAG OVER
+            uploadArea.ondragover = (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            };
+
+            // DRAG LEAVE
+            uploadArea.ondragleave = () => {
+                uploadArea.classList.remove('dragover');
+            };
+
+            // DROP
+            uploadArea.ondrop = (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                    const file = e.dataTransfer.files[0];
+                    handleFileSelection(file);
+                }
+            };
+        }
+            
+            // Close result button click
+            closeResultButton.addEventListener('click', () => {
+                resultContainer.style.display = 'none';
+                resultContainer.classList.remove('show');
+                
+                // Show upload section again
+                uploadSection.style.display = 'block';
+                
+                // Reset upload area to default
+                uploadArea.innerHTML = `
+                    <div class="upload-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h4>Unggah Gambar MRI</h4>
+                    <p class="text-muted">Seret dan lepas file gambar MRI Anda di sini atau klik untuk memilih file</p>
+                    <p class="small text-muted">Format yang didukung: JPG, PNG, DICOM. Ukuran maks: 10MB</p>
+                    <button class="btn btn-outline-primary mt-3" id="browseButton">
+                        <i class="fas fa-folder-open me-2"></i>Pilih File
+                    </button>
+                    <input type="file" id="fileInput" class="file-input" accept=".jpg,.jpeg,.png,.dicom">
+                `;
+                
+                // Re-attach event listeners after resetting
+                setTimeout(() => {
+                    attachUploadListeners();
+                }, 0);
+                
+                // Reset process button
+                processButton.disabled = true;
+                processButton.innerHTML = '<i class="fas fa-play-circle me-2"></i>Proses Deteksi Tumor';
+                
+                // Clear images and revoke object URLs to prevent memory leaks and caching issues
+                if (originalImage.src && originalImage.src.startsWith('blob:')) {
+                    URL.revokeObjectURL(originalImage.src);
+                }
+                if (processedImage.src && processedImage.src.startsWith('blob:')) {
+                    URL.revokeObjectURL(processedImage.src);
+                }
+                originalImage.src = '';
+                processedImage.src = '';
+                detectionResults.innerHTML = '';
+                selectedFile = null;
+            });
+            
+            // Attach initial upload listeners
+            attachUploadListeners();
+            
+            // Handle file selection
+            function handleFileSelection(file) {
+                // Clear previous detection results and revoke object URLs
+                selectedFile = file;
+                resultContainer.style.display = 'none';
+                resultContainer.classList.remove('show');
+                uploadSection.style.display = 'block';
+                
+                // Revoke and clear images
+                if (originalImage.src && originalImage.src.startsWith('blob:')) {
+                    URL.revokeObjectURL(originalImage.src);
+                }
+                if (processedImage.src && processedImage.src.startsWith('blob:')) {
+                    URL.revokeObjectURL(processedImage.src);
+                }
+                originalImage.src = '';
+                processedImage.src = '';
+                detectionResults.innerHTML = '';
+                boundingBox.style.display = 'none';
+                
+                // Check file type
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/dicom'];
+                if (!validTypes.includes(file.type) && !file.name.toLowerCase().endsWith('.dicom')) {
+                    alert('Format file tidak didukung. Harap unggah file JPG, PNG, atau DICOM.');
+                    return;
+                }
+                
+                // Check file size (10MB max)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('Ukuran file terlalu besar. Maksimum 10MB.');
+                    return;
+                }
+                
+                // Display file name
+                uploadArea.innerHTML = `
+                    <div class="upload-icon text-success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>File Siap Diproses</h4>
+                    <p class="mb-2"><strong>${file.name}</strong></p>
+                    <p class="small text-muted">${(file.size / (1024 * 1024)).toFixed(2)} MB</p>
+                    <button class="btn btn-outline-secondary mt-3" id="changeFileButton">
+                        <i class="fas fa-exchange-alt me-2"></i>Ubah File
+                    </button>
+                `;
+                
+                // Enable process button
+                processButton.disabled = false;
+                
+                // Add event listener to change file button
+                setTimeout(() => {
+                    const changeFileButton = document.getElementById('changeFileButton');
+                    const currentFileInput = uploadArea.querySelector('#fileInput');
+                    if (changeFileButton && currentFileInput) {
+                        changeFileButton.addEventListener('click', () => {
+                            currentFileInput.click();
+                        });
+                    }
+                }, 100);
+                
+                // Preview image if it's a standard image format
+                if (file.type.startsWith('image/') && !file.type.includes('dicom')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        originalImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // For DICOM files or other formats, show a placeholder
+                    originalImage.src = 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+                }
+            }
+            
+            processButton.addEventListener('click', async function () {
+            if (!selectedFile) {
+                alert('Harap pilih file MRI terlebih dahulu.');
+                return;
+            }
+
+            processButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Memproses...';
+            processButton.disabled = true;
+
+            const formData = new FormData();
+            formData.append("image", selectedFile);
+
+            try {
+                    const response = await fetch("/process-image", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Gagal memproses gambar");
+                    }
+
+                    const blob = await response.blob();
+                    const imageUrl = URL.createObjectURL(blob);
+
+                    if (processedImage.src) {
+                        URL.revokeObjectURL(processedImage.src);
+                    }
+
+                    processedImage.src = imageUrl;
+
+                    resultContainer.style.display = "block";
+                    resultContainer.classList.add('show');
+                    uploadSection.style.display = 'none';
+
+                } catch (error) {
+                    alert("Terjadi kesalahan saat inferensi");
+                    console.error(error);
+                }
+
+            processButton.innerHTML = '<i class="fas fa-play-circle me-2"></i>Proses Deteksi Tumor';
+            processButton.disabled = false;
+});
+});
+        
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+</html>

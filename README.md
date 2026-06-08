@@ -23,6 +23,38 @@ Proyek ini bertujuan untuk mendeteksi area tumor otak pada citra MRI medis.
 
 ---
 
+---
+
+## 📦 Instalasi
+
+1. **Clone repository**
+
+   ```bash
+   git clone https://github.com/ZULARSYL/Tumor-Otak-Detection.git
+   cd Tumor-Otak-Detection
+
+   ```
+
+2. **Buat Virtual Enviroment**
+   ```bash
+    python -m venv yolo_env
+   ```
+3. **Aktifkan Virtual Environment**
+   ```bash
+    source yolo_env/Scripts/activate
+    .\yolo_env\Scripts\Activate.ps1
+   ```
+4. **Install Dependensi**
+   ```bash
+    pip install -r requirements.txt
+   ```
+5. **Run Aplikasi**
+   ```bash
+   python main.py
+   ```
+
+---
+
 ## 📸 Dokumentasi Project
 
 ![val_batch0_pred](https://github.com/user-attachments/assets/eb6ad8c6-a33f-452b-9c90-c603154701a7)

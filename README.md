@@ -23,8 +23,6 @@ Proyek ini bertujuan untuk mendeteksi area tumor otak pada citra MRI medis.
 
 ---
 
----
-
 ## 📦 Instalasi
 
 1. **Clone repository**

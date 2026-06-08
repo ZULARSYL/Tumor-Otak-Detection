@@ -1,4 +1,4 @@
-# 🔥 Tumor Detection YOLOv8(nano)
+# 🧠 Tumor Detection YOLOv8(nano)
 
 Sistem deteksi Tumor otak **Object Detection** menggunakan model **YOLOv8**.  
 Proyek ini bertujuan untuk mendeteksi area tumor otak pada citra MRI medis.
@@ -62,7 +62,3 @@ Proyek ini bertujuan untuk mendeteksi area tumor otak pada citra MRI medis.
 ![test](https://github.com/user-attachments/assets/5e2de0f6-a0f1-4fe4-8d5e-a4578fd1f027)
 
 ---
-
-## Output Video
-
-https://github.com/user-attachments/assets/b55daf84-0a80-4a81-b299-7bf72e54cfb7

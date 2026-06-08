@@ -57,7 +57,9 @@ Proyek ini bertujuan untuk mendeteksi area tumor otak pada citra MRI medis.
 
 <img width="2400" height="1200" alt="results" src="https://github.com/user-attachments/assets/0c051a75-dc8e-47bd-ae2c-dd7111b2c2e5" />
 <img width="1920" height="1920" alt="val_batch0_labels" src="https://github.com/user-attachments/assets/66fe3954-dfbb-489a-b295-81f5e662db13" />
+
 ---
+
 ## 📸 Hasil Deteksi
 
 <img width="250" alt="meningioma (982)" src="https://github.com/user-attachments/assets/0111dbec-9d87-4563-ae3b-9cc92fd8f094" />
